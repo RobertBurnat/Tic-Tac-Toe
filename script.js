@@ -2,9 +2,7 @@
     let poles = Array.prototype.slice.call(document.querySelectorAll(".pole"));
     let activePlayer = 1
     let round = 0;
-    let restart = document.querySelector('.restart');
-    let gamePlaying = true;
-    restart.classList.add('hide');
+//    let restart = document.querySelector('.restart');
     let game = (function game() {
         for(let i = 0, size = poles.length; i < size; i++) {
             let pole = document.getElementById([i +1]);
@@ -26,7 +24,6 @@
     function nextPlayer() {
         activePlayer === 1 ? activePlayer = 2 : activePlayer = 1;
         round++;
-        console.log(round);
     }
     
     function checkWinner() {
