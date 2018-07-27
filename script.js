@@ -53,7 +53,7 @@
             }
         }
         if(round >= 8) {
-            const markup = `<h1 class="draw_banner">DRAW</h1>`;
+            const markup = `<h1 class="result_banner">DRAW</h1>`;
             restartBtn.style.visibility = "visible";
             document.querySelector('.game__table').insertAdjacentHTML('beforeend', markup);
         }
