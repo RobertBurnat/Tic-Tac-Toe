@@ -46,12 +46,14 @@
         for(let i in matrix) {
             let items = matrix[i].map(key => poles[key]);
             if(items.every(itm => itm.innerHTML === "X") || items.every(itm => itm.innerHTML === "O")) {
-                console.log(`Player ${activePlayer} Win!`)
-                return;
+                const markup = `<h1 class="result_banner">Player ${activePlayer} Win!</h1>`;
+                items.every(itm => itm.style.backgroundColor = '#22dc2e');
+                return document.querySelector('.game__table').innerHTML += markup;
             }
         }
         if(round >= 8) {
-            console.log('DRAW');
+            const markup = `<h1 class="draw_banner">DRAW</h1>`;
+            return document.querySelector('.game__table').innerHTML += markup;
         }
     }
     
