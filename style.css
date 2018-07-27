@@ -38,3 +38,11 @@ body {
 .disable {
     pointer-events:none;
 }
+.hide {
+    display:none;
+}
+.restart {
+    height: 50px;
+    width: 100px;
+    margin-top: 50px;
+}
