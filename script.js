@@ -1,13 +1,15 @@
-(function() {
-    let poles = Array.prototype.slice.call(document.querySelectorAll(".pole"));
-    let activePlayer = 1
-    let round = 0;
-//    let restart = document.querySelector('.restart');
+(() => {
+    let poles, activePlayer, round, choosePlayer, restartBtn;
+    poles = Array.prototype.slice.call(document.querySelectorAll(".pole"));
+    restartBtn = document.querySelector('.restart')
+    init();
     let game = (function game() {
         for(let i = 0, size = poles.length; i < size; i++) {
+            poles[i].style.backgroundColor = '#ccc';
             let pole = document.getElementById([i +1]);
             pole.addEventListener('click', () => {
-                let disablePole = poles[i].classList.add('disable');
+                poles[i].style.backgroundColor = '#fff';
+                poles[i].classList.add('disable');
                 if(activePlayer === 1) {
                     poles[i].innerHTML = 'X';
                     checkWinner();
@@ -22,7 +24,7 @@
 })();
     
     function nextPlayer() {
-        activePlayer === 1 ? activePlayer = 2 : activePlayer = 1;
+        activePlayer === 2 ? activePlayer = 1 : activePlayer = 2;
         round++;
     }
     
@@ -45,12 +47,29 @@
             if(items.every(itm => itm.innerHTML === "X") || items.every(itm => itm.innerHTML === "O")) {
                 const markup = `<h1 class="result_banner">Player ${activePlayer} Win!</h1>`;
                 items.every(itm => itm.style.backgroundColor = '#22dc2e');
-                return document.querySelector('.game__table').innerHTML += markup;
+                restartBtn.style.visibility = "visible";
+                document.querySelector('.game__table').insertAdjacentHTML('beforeend', markup);
+                return false;
             }
         }
         if(round >= 8) {
             const markup = `<h1 class="draw_banner">DRAW</h1>`;
-            return document.querySelector('.game__table').innerHTML += markup;
+            restartBtn.style.visibility = "visible";
+            document.querySelector('.game__table').insertAdjacentHTML('beforeend', markup);
+        }
+    }
+    restartBtn.addEventListener('click', () => {
+        init();
+        document.querySelector('.result_banner').remove();
+    });
+    function init() {
+        activePlayer = 1;
+        round = 0;
+        restartBtn.style.visibility = "hidden";
+        poles.every(item => item.innerHTML = " ");
+         for(let i = 0; i < poles.length; i++) {
+            poles[i].classList.remove('disable');
+            poles[i].style.backgroundColor = '#ccc';
         }
     }
 })();
