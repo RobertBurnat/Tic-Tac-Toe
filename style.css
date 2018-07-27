@@ -46,3 +46,12 @@ body {
     width: 100px;
     margin-top: 50px;
 }
+.result_banner, .draw_banner {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 4.5em;
+    color:#22dc2e;
+}
+.draw_banner {
+    color:#e09d38;
+}
