@@ -1,34 +1,39 @@
 (() => {
-    let poles, activePlayer, round, choosePlayer, restartBtn;
+    let poles, activePlayer, round, choosePlayer, restartBtn, gamePlaying;
     poles = Array.prototype.slice.call(document.querySelectorAll(".pole"));
     restartBtn = document.querySelector('.restart')
     init();
     let game = (function game() {
+        if(gamePlaying) {
         for(let i = 0, size = poles.length; i < size; i++) {
             poles[i].style.backgroundColor = '#ccc';
             let pole = document.getElementById([i +1]);
             pole.addEventListener('click', () => {
+                if(gamePlaying) {
                 poles[i].style.backgroundColor = '#fff';
                 poles[i].classList.add('disable');
                 if(activePlayer === 1) {
                     poles[i].innerHTML = 'X';
                     checkWinner();
-                    nextPlayer();
                 } else {
                     poles[i].innerHTML = 'O';
                     checkWinner();
-                    nextPlayer();
                 }
+            }
         });
     }
+}
 })();
     
     function nextPlayer() {
+        if(gamePlaying) {
         activePlayer === 2 ? activePlayer = 1 : activePlayer = 2;
         round++;
+        }
     }
     
     function checkWinner() {
+        if(gamePlaying) {
         let matrix = [
             //horizontal
             [0, 1, 2],
@@ -49,13 +54,16 @@
                 items.every(itm => itm.style.backgroundColor = '#22dc2e');
                 restartBtn.style.visibility = "visible";
                 document.querySelector('.game__table').insertAdjacentHTML('beforeend', markup);
-                return false;
+                gamePlaying = false;
             }
         }
         if(round >= 8) {
             const markup = `<h1 class="result_banner">DRAW</h1>`;
             restartBtn.style.visibility = "visible";
             document.querySelector('.game__table').insertAdjacentHTML('beforeend', markup);
+            gamePlaying = false;
+        }
+        nextPlayer();
         }
     }
     restartBtn.addEventListener('click', () => {
@@ -65,6 +73,7 @@
     function init() {
         activePlayer = 1;
         round = 0;
+        gamePlaying = true;
         restartBtn.style.visibility = "hidden";
         poles.every(item => item.innerHTML = " ");
          for(let i = 0; i < poles.length; i++) {
