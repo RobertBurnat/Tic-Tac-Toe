@@ -2,13 +2,13 @@
     let poles = Array.prototype.slice.call(document.querySelectorAll(".pole"));
     let activePlayer = 0;
     let disabledPole = [];
-    var round = 0;
-    var restart = document.querySelector('.restart');
+    let round = 0;
+    let restart = document.querySelector('.restart');
     restart.classList.add('hide');
-    var game = (function game() {
+    let game = (function game() {
         for(let i = 0, size = poles.length; i < size; i++) {
             let pole = document.getElementById([i +1]);
-            pole.addEventListener('click', function() {
+            pole.addEventListener('click', () => {
                 let disablePole = poles[i].classList.add('disable');
                 if(activePlayer === 0) {
                     poles[i].innerHTML = 'X';
@@ -29,22 +29,22 @@
     }
     
     function checkWinner() {
-        let matrix = [
-            //horizontal
-            [0, 1, 2],
-            [3, 4, 5],
-            [6, 7, 8],
-            //Vertical
-            [0, 3, 6],
-            [1, 4, 7],
-            [2, 5, 8],
-            //Diagonal
-            [0, 4, 8],
-            [2, 4, 6]
-            
-        ]
-//        var player1 = 'X';
-//        var player2 = 'O'
+//        let matrix = [
+//            //horizontal
+//            [0, 1, 2],
+//            [3, 4, 5],
+//            [6, 7, 8],
+//            //Vertical
+//            [0, 3, 6],
+//            [1, 4, 7],
+//            [2, 5, 8],
+//            //Diagonal
+//            [0, 4, 8],
+//            [2, 4, 6]
+//            
+//        ]
+//        let player1 = 'X';
+//        let player2 = 'O'
 //        if((poles[0].innerHTML === player1 && poles[1].innerHTML === player1 && poles[2].innerHTML === player1)
 //          ||
 //          (poles[3].innerHTML === player1 && poles[4].innerHTML === player1 && poles[5].innerHTML === player1)
