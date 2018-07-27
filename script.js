@@ -1,7 +1,6 @@
 (function() {
     let poles = Array.prototype.slice.call(document.querySelectorAll(".pole"));
     let activePlayer = 1
-    let disabledPole = [];
     let round = 0;
     let restart = document.querySelector('.restart');
     let gamePlaying = true;
