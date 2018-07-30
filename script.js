@@ -27,7 +27,7 @@
     
     function nextPlayer() {
         if(gamePlaying) {
-            activePlayer === 2 ? activePlayer = 1 : activePlayer = 2;
+            activePlayer === 1 ? activePlayer = 2 : activePlayer = 1;
             console.log(activePlayer);
             round++;
         }
@@ -60,10 +60,9 @@
                 }
             }
             if(round >= 8) {
-                const markup = `<h1 class="result_banner">DRAW</h1>`;
+                const markup = `<h1 class="result_banner" style="color: orange;">DRAW</h1>`;
                 restartBtn.style.visibility = "visible";
                 document.querySelector('.game__table').insertAdjacentHTML('beforeend', markup);
-                gamePlaying = false;
             }
             nextPlayer();
         }
