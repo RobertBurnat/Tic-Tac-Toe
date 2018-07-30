@@ -2,7 +2,8 @@
     let poles = Array.prototype.slice.call(document.querySelectorAll(".pole"));
     let activePlayer = 1
     let round = 0;
-//    let restart = document.querySelector('.restart');
+    init();
+    let restartBtn = document.querySelector('.restart');
     let game = (function game() {
         for(let i = 0, size = poles.length; i < size; i++) {
             let pole = document.getElementById([i +1]);
@@ -45,13 +46,20 @@
             if(items.every(itm => itm.innerHTML === "X") || items.every(itm => itm.innerHTML === "O")) {
                 const markup = `<h1 class="result_banner">Player ${activePlayer} Win!</h1>`;
                 items.every(itm => itm.style.backgroundColor = '#22dc2e');
-                return document.querySelector('.game__table').innerHTML += markup;
+                
             }
         }
         if(round >= 8) {
             const markup = `<h1 class="draw_banner">DRAW</h1>`;
-            return document.querySelector('.game__table').innerHTML += markup;
+            document.querySelector('.game__table').innerHTML += markup;
         }
     }
+    
+    function init() {
+        poles.every(item => item.innerHTML = ' ');
+        let acitvePlayer = 1;
+        let round = 0;
+    }
+    restartBtn.addEventListener('click', init);
     
 })();
