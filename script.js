@@ -27,7 +27,7 @@
     
     function nextPlayer() {
         if(gamePlaying) {
-            activePlayer === 1 ? activePlayer = 2 : activePlayer = 1;
+            activePlayer === 2 ? activePlayer = 1 : activePlayer = 2;
             console.log(activePlayer);
             round++;
         }
@@ -56,6 +56,7 @@
                     restartBtn.style.visibility = "visible";
                     document.querySelector('.game__table').insertAdjacentHTML('beforeend', markup);
                     gamePlaying = false;
+                    return;
                 }
             }
             if(round >= 8) {
