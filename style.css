@@ -43,9 +43,14 @@ body {
     visibility: hidden;
 }
 .restart {
-    height: 50px;
-    width: 100px;
+    height: 70px;
+    line-height: 70px;
     margin-top: 50px;
+    border: none;
+    border-radius: 6px;
+    background-color:rgba( 19, 173, 220, 0.772 );
+    color: white;
+    font-size: 25px;
 }
 .result_banner, .draw_banner {
     text-align: center;
